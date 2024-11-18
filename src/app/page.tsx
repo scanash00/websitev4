@@ -200,7 +200,7 @@ export default function Home() {
                   Projects
                 </h2>
                 <p className="text-white/80 max-w-2xl text-base sm:text-lg">
-                  Projects I've worked on!
+                  Projects I&apos;ve worked on!
                 </p>
               </div>
 
@@ -214,7 +214,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative p-6 sm:p-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-white/20 transition-colors duration-500">
                     <h3 className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-violet-500 to-cyan-500 bg-clip-text text-transparent mb-3">
-                      Scan's Website V4
+                      Scan&apos;s Website V4
                     </h3>
                     <p className="text-white/70 text-sm sm:text-base mb-4">
                       A fully made website by myself, no templates, just full myself. Built with
@@ -242,7 +242,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative p-6 sm:p-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-white/20 transition-colors duration-500">
                     <h3 className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-violet-500 to-cyan-500 bg-clip-text text-transparent mb-3">
-                      Scan's Website V3
+                      Scan&apos;s Website V3
                     </h3>
                     <p className="text-white/70 text-sm sm:text-base mb-4">
                       3rd version of my website, using Astro portfolio template.
@@ -263,11 +263,11 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 via-fuchsia-500/20 to-cyan-500/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative p-6 sm:p-8 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-white/20 transition-colors duration-500">
                     <h3 className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-violet-500 to-cyan-500 bg-clip-text text-transparent mb-3">
-                      Scan's Website V2
+                      Scan&apos;s Website V2
                     </h3>
                     <p className="text-white/70 text-sm sm:text-base mb-4">
-                      Second version of Scan's Website, does not use frameworks, and is light. Link
-                      not available.
+                      Second version of Scan&apos;s Website, does not use frameworks, and is light.
+                      Link not available.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 text-xs rounded-full bg-violet-500/10 text-violet-300 border border-violet-500/20">
@@ -334,11 +334,11 @@ export default function Home() {
             >
               <div className="space-y-3 sm:space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-violet-500 to-cyan-500 bg-clip-text text-transparent mb-4 md:mb-8 [text-shadow:_0_2px_10px_rgb(124_58_237_/_20%)]">
-                  Let's Connect
+                  Let&apos;s Connect
                 </h2>
                 <p className="text-white/80 text-base md:text-lg mb-8 md:mb-12 leading-relaxed">
-                  Feel free to reach out through any of these platforms. I'm always interested in
-                  new opportunities and collaborations.
+                  Feel free to reach out through any of these platforms. I&apos;m always interested
+                  in new opportunities and collaborations.
                 </p>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

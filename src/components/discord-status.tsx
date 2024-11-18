@@ -8,6 +8,7 @@ import { IoGameController } from 'react-icons/io5';
 import { MdVerified } from 'react-icons/md';
 import { FaCrown, FaMoon } from 'react-icons/fa';
 import { BsCircleFill, BsDashCircleFill } from 'react-icons/bs';
+import Image from 'next/image';
 
 interface Activity {
   type: number;
@@ -149,7 +150,7 @@ export function DiscordStatus() {
     const updateElapsedTime = () => {
       const startTime = status.data.activities[0].timestamps?.start;
       if (!startTime) return;
-      
+
       const elapsed = Date.now() - startTime;
       setElapsedTime(formatTime(elapsed));
     };
@@ -197,9 +198,10 @@ export function DiscordStatus() {
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             className="relative"
           >
-            <img
+            <Image
               src={avatarUrl}
               alt="Discord Avatar"
+              fill
               className="w-[60px] h-[60px] rounded-full ring-[3px] ring-[#5865F2]/10"
             />
             <div className="absolute -bottom-1 -right-1 w-[19px] h-[19px] rounded-full bg-[#1E1F22]/80 backdrop-blur-sm flex items-center justify-center">
@@ -222,11 +224,14 @@ export function DiscordStatus() {
                 animate={{ opacity: 1 }}
                 className="flex items-center justify-center gap-3 text-sm text-[#949BA4]"
               >
-                <img
-                  src={discordData.spotify.album_art_url}
-                  alt="Album Art"
-                  className="w-12 h-12 rounded"
-                />
+                <div className="relative w-12 h-12">
+                  <Image
+                    src={discordData.spotify.album_art_url}
+                    alt={discordData.spotify.song}
+                    fill
+                    className="rounded"
+                  />
+                </div>
                 <div className="flex flex-col">
                   <span className="text-white">{discordData.spotify.song}</span>
                   <span>{discordData.spotify.artist.split(';')[0].trim()}</span>
@@ -241,11 +246,14 @@ export function DiscordStatus() {
                 className="flex items-center justify-center gap-3 text-sm text-[#949BA4]"
               >
                 {mainActivity.assets?.large_image && (
-                  <img
-                    src={getAssetUrl(mainActivity) || ''}
-                    alt={mainActivity.name || 'Activity'}
-                    className="w-12 h-12 rounded"
-                  />
+                  <div className="relative w-12 h-12">
+                    <Image
+                      src={getAssetUrl(mainActivity) || ''}
+                      alt={mainActivity.name || 'Activity'}
+                      fill
+                      className="rounded"
+                    />
+                  </div>
                 )}
                 <div className="flex flex-col">
                   <span className="text-white">{mainActivity.name}</span>
