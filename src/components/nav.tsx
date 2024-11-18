@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useEffect, useState } from 'react';
@@ -8,6 +9,7 @@ import { useEffect, useState } from 'react';
 export function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const router = useRouter();
 
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 100], [0, 0.95]);
@@ -49,8 +51,7 @@ export function Nav() {
 
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    setActiveSection('top');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    router.push('/');
   };
 
   return (
@@ -70,45 +71,48 @@ export function Nav() {
         }}
         className="fixed top-0 left-0 right-0 z-50 h-14 sm:h-16 md:h-20"
       >
-        <nav className="relative h-full mx-auto max-w-7xl px-4 sm:px-6">
+        <nav className="relative h-full mx-auto max-w-7xl px-3 sm:px-6">
           <div className="flex h-full items-center justify-between">
             <Link 
               href="/"
+              onClick={handleHomeClick}
               className="group relative"
             >
               <motion.div 
-                className="relative"
+                className="relative cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <span className="inline-block text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">
+                <span className="inline-block text-base sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">
                   Scan
                 </span>
               </motion.div>
             </Link>
 
-            <div className="flex items-center gap-3 sm:gap-4 md:gap-8">
+            <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
               {['projects', 'contact'].map((section) => (
                 <Link 
                   key={section}
                   href={`#${section}`}
                   className={cn(
-                    'group relative px-2 sm:px-3 md:px-4 py-1.5 sm:py-2',
+                    'group relative px-2 sm:px-3 md:px-4 py-1 sm:py-2',
                     'text-xs sm:text-sm font-medium transition-colors duration-300',
+                    'whitespace-nowrap',
                     activeSection === section ? 'text-white' : 'text-white/60 hover:text-white'
                   )}
                 >
                   <span className="relative z-10 capitalize">{section}</span>
                   {activeSection === section && (
                     <motion.div
-                      className="absolute -bottom-1 left-2 right-2 h-px bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500"
+                      className="absolute inset-0 bg-white/10 rounded-full"
                       layoutId="activeSection"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30
+                      }}
                     />
                   )}
-                  <motion.div
-                    className="absolute -bottom-1 left-2 right-2 h-px bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                  />
                 </Link>
               ))}
             </div>

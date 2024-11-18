@@ -116,83 +116,66 @@
 @layer utilities {
   .animate-float {
     animation: float 6s ease-in-out infinite;
+    will-change: transform;
   }
 
   .animate-gradient {
     animation: gradient-shift 3s ease infinite;
+    will-change: background-position;
   }
 
   .animate-scroll {
     animation: scroll 2s ease-in-out infinite;
+    will-change: transform;
   }
 
   .animate-gradient-x {
     background-size: 200% 200%;
     animation: gradient-x 15s ease infinite;
-  }
-
-  .animate-twinkle {
-    animation: twinkle 5s ease-in-out infinite;
-  }
-
-  .animate-scroll {
-    animation: scroll 2s ease-in-out infinite;
+    will-change: background-position;
   }
 
   @keyframes float-particle {
-    0% {
+    0%, 100% {
       transform: translate(0, 0);
     }
-    33% {
-      transform: translate(10px, -10px);
-    }
-    66% {
-      transform: translate(-10px, 10px);
-    }
-    100% {
-      transform: translate(0, 0);
+    50% {
+      transform: translate(5px, -5px);
     }
   }
 
   .animate-float-particle {
-    animation: float-particle 10s ease-in-out infinite;
+    animation: float-particle 6s ease-in-out infinite;
+    will-change: transform;
   }
 
   @keyframes twinkle {
     0%, 100% {
       opacity: 0.2;
-      transform: scale(0.5) translate(0, 0);
+      transform: scale(0.5);
     }
     50% {
-      opacity: 1;
-      transform: scale(1) translate(5px, 5px);
+      opacity: 0.8;
+      transform: scale(0.8);
     }
   }
 
+  .particle {
+    animation: float-particle 6s ease-in-out infinite;
+    will-change: transform;
+  }
+
   .particle:nth-child(2n) {
-    animation-delay: 1s;
     animation-duration: 7s;
   }
 
   .particle:nth-child(3n) {
-    animation-delay: 2s;
-    animation-duration: 9s;
-  }
-
-  .particle:nth-child(4n) {
-    animation-delay: 3s;
-    animation-duration: 11s;
-  }
-
-  .particle:nth-child(5n) {
-    animation-delay: 4s;
-    animation-duration: 13s;
+    animation-duration: 8s;
   }
 
   @keyframes scrollIndicator {
-    0% { transform: translateY(-4px); }
+    0%, 100% { transform: translateY(-4px); }
     50% { transform: translateY(4px); }
-    100% { transform: translateY(-4px); }
   }
 
   @keyframes fadeIn {
@@ -203,7 +186,7 @@
   @keyframes slideUp {
     from { 
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(10px);
     }
     to {
       opacity: 1;
@@ -211,95 +194,19 @@
     }
   }
 
-  @keyframes floatParticle {
-    0% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-    33% {
-      transform: translate(10px, -10px) rotate(120deg);
-    }
-    66% {
-      transform: translate(-10px, 10px) rotate(240deg);
-    }
-    100% {
-      transform: translate(0, 0) rotate(360deg);
-    }
-  }
-
   .scroll-indicator {
     animation: scrollIndicator 1.5s ease-in-out infinite;
+    will-change: transform;
   }
 
   .fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
+    animation: fadeIn 0.4s ease-out forwards;
   }
 
   .slide-up {
-    animation: slideUp 0.6s ease-out forwards;
+    animation: slideUp 0.4s ease-out forwards;
+    will-change: transform, opacity;
   }
-
-  .particle {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    pointer-events: none;
-    opacity: 0.4;
-  }
-
-  .particle:nth-child(3n) {
-    width: 3px;
-    height: 3px;
-    opacity: 0.6;
-  }
-
-  .particle:nth-child(4n) {
-    width: 1px;
-    height: 1px;
-    opacity: 0.3;
-  }
-
-  .particle:nth-child(1) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
-  .particle:nth-child(2) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
-  .particle:nth-child(3) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
-  .particle:nth-child(4) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
-  .particle:nth-child(5) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
-  .particle:nth-child(6) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
-  .particle:nth-child(7) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
-  .particle:nth-child(8) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
-  .particle:nth-child(9) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
-  .particle:nth-child(10) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
-  .particle:nth-child(11) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
-  .particle:nth-child(12) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
-  .particle:nth-child(13) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
-  .particle:nth-child(14) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
-  .particle:nth-child(15) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
-  .particle:nth-child(16) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
-  .particle:nth-child(17) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
-  .particle:nth-child(18) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
-  .particle:nth-child(19) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
-  .particle:nth-child(20) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
-  .particle:nth-child(21) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
-  .particle:nth-child(22) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
-  .particle:nth-child(23) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
-  .particle:nth-child(24) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
-  .particle:nth-child(25) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
-  .particle:nth-child(26) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
-  .particle:nth-child(27) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
-  .particle:nth-child(28) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
-  .particle:nth-child(29) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
-  .particle:nth-child(30) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
-  .particle:nth-child(31) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
-  .particle:nth-child(32) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
-  .particle:nth-child(33) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
-  .particle:nth-child(34) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
-  .particle:nth-child(35) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
-  .particle:nth-child(36) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
-  .particle:nth-child(37) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
-  .particle:nth-child(38) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
-  .particle:nth-child(39) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
-  .particle:nth-child(40) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
 
   .hover-scale {
     transition: transform 0.2s ease-out;
@@ -320,7 +227,8 @@
   .gradient-text {
     @apply bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent;
     background-size: 200% auto;
-    animation: gradient 8s linear infinite;
+    animation: gradient 6s linear infinite;
+    will-change: background-position;
   }
 
   @keyframes float {
@@ -344,17 +252,6 @@
     }
     100% {
       background-position: 0% 50%;
-    }
-  }
-
-  @keyframes slide-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
     }
   }
 
@@ -393,50 +290,9 @@
     }
   }
 
-  @keyframes scrollIndicator {
-    0% {
-      transform: translateY(-4px);
-    }
-    50% {
-      transform: translateY(4px);
-    }
-    100% {
-      transform: translateY(-4px);
-    }
-  }
-
-  .scroll-indicator {
-    animation: scrollIndicator 1.5s ease-in-out infinite;
-  }
-
-  /* Staggered animations */
-  .stagger-children > * {
-    opacity: 0;
-    animation: slide-up 0.5s ease-out forwards;
-  }
-
-  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
-  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
-  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
-  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
-
-  /* Glass effect */
   .glass {
-    @apply bg-opacity-20 backdrop-blur-lg backdrop-saturate-150;
+    @apply bg-opacity-20 backdrop-blur-sm backdrop-saturate-150;
     border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Gradient text */
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500;
-    background-size: 200% auto;
-    animation: gradient 8s linear infinite;
-  }
-
-  /* Dark gradient background */
-  .gradient-bg {
-    background: linear-gradient(to bottom, var(--background) 0%, rgba(9, 9, 11, 0.5) 100%);
   }
 
   /* Enhanced scrollbar */

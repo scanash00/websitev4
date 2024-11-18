@@ -13,8 +13,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Your Name',
-    default: 'Your Name - Portfolio',
+    template: '%s | Scan',
+    default: 'Scan - Portfolio',
   },
   description: 'Your portfolio description',
 };
@@ -26,6 +26,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link 
+          rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+        />
+      </head>
       <body className={`${inter.className} bg-black text-white`}>
         <Providers>
           <Background />
