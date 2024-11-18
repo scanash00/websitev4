@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: '%s | Scan',
     default: 'Scan - Portfolio',
   },
-  description: 'Your portfolio description',
+  description: "Scan's portfolio website!",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
