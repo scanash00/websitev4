@@ -53,9 +53,7 @@ export function ProjectCard({
               {title}
             </Link>
           </h3>
-          <p className="mt-2 text-sm text-muted-foreground line-clamp-3">
-            {description}
-          </p>
+          <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{description}</p>
         </div>
 
         <motion.div

@@ -19,7 +19,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       >
         <MotionConfig reducedMotion="user">
           {children}
-          <Toaster 
+          <Toaster
             position="bottom-right"
             toastOptions={{
               style: {

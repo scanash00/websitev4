@@ -93,11 +93,11 @@ const formatTime = (ms: number) => {
 
 const getAssetUrl = (activity: any) => {
   if (!activity.assets?.large_image) return null;
-  
+
   if (activity.assets.large_image.startsWith('spotify:')) {
     return `https://i.scdn.co/image/${activity.assets.large_image.slice('spotify:'.length)}`;
   }
-  
+
   return `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.png`;
 };
 
@@ -118,23 +118,23 @@ export function DiscordStatus() {
   const [status, setStatus] = useState<DiscordStatusData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [elapsedTime, setElapsedTime] = useState<string>('');
-  const userId = "827389583342698536";
+  const userId = '827389583342698536';
 
   useEffect(() => {
     async function fetchDiscordStatus() {
       try {
         const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
         if (response.ok) {
-          const data = await response.json() as DiscordStatusData;
+          const data = (await response.json()) as DiscordStatusData;
           setStatus(data);
           setError(null);
         } else {
-          const errorData = await response.json() as LanyardError;
-          throw new Error(errorData.error || "Failed to fetch status");
+          const errorData = (await response.json()) as LanyardError;
+          throw new Error(errorData.error || 'Failed to fetch status');
         }
       } catch (error) {
-        console.error("Error fetching Discord status:", error);
-        setError("Failed to load Discord status.");
+        console.error('Error fetching Discord status:', error);
+        setError('Failed to load Discord status.');
       }
     }
 
@@ -147,7 +147,9 @@ export function DiscordStatus() {
     if (!status?.data.activities?.[0]?.timestamps?.start) return;
 
     const updateElapsedTime = () => {
-      const startTime = status.data.activities[0].timestamps.start!;
+      const startTime = status.data.activities[0].timestamps?.start;
+      if (!startTime) return;
+      
       const elapsed = Date.now() - startTime;
       setElapsedTime(formatTime(elapsed));
     };
@@ -176,11 +178,11 @@ export function DiscordStatus() {
   }
 
   const discordData = status.data;
-  const isOnline = discordData.discord_status !== "offline";
-  const activities = discordData.activities.filter(activity => activity.type !== 4); // Filter out custom status
+  const isOnline = discordData.discord_status !== 'offline';
+  const activities = discordData.activities.filter((activity) => activity.type !== 4); // Filter out custom status
   const mainActivity = activities[0];
   const avatarUrl = `https://cdn.discordapp.com/avatars/${discordData.discord_user.id}/${discordData.discord_user.avatar}?size=160`;
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -192,7 +194,7 @@ export function DiscordStatus() {
         <div className="relative flex-shrink-0">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             className="relative"
           >
             <img
@@ -215,7 +217,7 @@ export function DiscordStatus() {
 
           <div className="space-y-2 flex flex-col items-center mt-2">
             {discordData.spotify && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="flex items-center justify-center gap-3 text-sm text-[#949BA4]"
@@ -226,12 +228,8 @@ export function DiscordStatus() {
                   className="w-12 h-12 rounded"
                 />
                 <div className="flex flex-col">
-                  <span className="text-white">
-                    {discordData.spotify.song}
-                  </span>
-                  <span>
-                    {discordData.spotify.artist.split(';')[0].trim()}
-                  </span>
+                  <span className="text-white">{discordData.spotify.song}</span>
+                  <span>{discordData.spotify.artist.split(';')[0].trim()}</span>
                 </div>
               </motion.div>
             )}
@@ -244,18 +242,14 @@ export function DiscordStatus() {
               >
                 {mainActivity.assets?.large_image && (
                   <img
-                    src={getAssetUrl(mainActivity)}
-                    alt={mainActivity.name}
+                    src={getAssetUrl(mainActivity) || ''}
+                    alt={mainActivity.name || 'Activity'}
                     className="w-12 h-12 rounded"
                   />
                 )}
                 <div className="flex flex-col">
-                  <span className="text-white">
-                    {mainActivity.name}
-                  </span>
-                  <span>
-                    {mainActivity.details}
-                  </span>
+                  <span className="text-white">{mainActivity.name}</span>
+                  <span>{mainActivity.details}</span>
                 </div>
               </motion.div>
             )}

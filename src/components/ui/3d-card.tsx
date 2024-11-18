@@ -74,12 +74,7 @@ export function Card3D({ children, className = '', imageUrl }: Card3DProps) {
             }}
             className="absolute -right-6 -top-6 h-24 w-24"
           >
-            <Image
-              src={imageUrl}
-              alt="Project preview"
-              fill
-              className="rounded-xl object-cover"
-            />
+            <Image src={imageUrl} alt="Project preview" fill className="rounded-xl object-cover" />
           </div>
         )}
         <div

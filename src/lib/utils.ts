@@ -1,5 +1,5 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -7,10 +7,10 @@ export function cn(...inputs: ClassValue[]) {
 
 export function formatDate(input: string | number | Date): string {
   const date = new Date(input);
-  return date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
+  return date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
   });
 }
 
@@ -20,9 +20,9 @@ export function absoluteUrl(path: string) {
 
 export function getInitials(name: string) {
   return name
-    .split(" ")
+    .split(' ')
     .map((n) => n[0])
-    .join("")
+    .join('')
     .toUpperCase();
 }
 
@@ -50,7 +50,7 @@ export function throttle<T extends (...args: any[]) => any>(
   let inThrottle: boolean;
   let lastResult: ReturnType<T>;
 
-  return function(...args: Parameters<T>): void {
+  return function (...args: Parameters<T>): void {
     if (!inThrottle) {
       inThrottle = true;
       lastResult = func(...args);
@@ -96,9 +96,10 @@ export function generateBlurDataUrl(width: number, height: number) {
       <animate xlink:href="#r" attributeName="x" from="-${width}" to="${width}" dur="1s" repeatCount="indefinite"  />
     </svg>`;
 
-  const toBase64 = typeof window === 'undefined'
-    ? (str: string) => Buffer.from(str).toString('base64')
-    : (str: string) => window.btoa(str);
+  const toBase64 =
+    typeof window === 'undefined'
+      ? (str: string) => Buffer.from(str).toString('base64')
+      : (str: string) => window.btoa(str);
 
   return `data:image/svg+xml;base64,${toBase64(svg)}`;
 }

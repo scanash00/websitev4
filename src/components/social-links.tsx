@@ -41,31 +41,39 @@ const container = {
 
 const item = {
   hidden: { opacity: 0, x: -10 },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     x: 0,
     transition: {
-      type: "spring",
+      type: 'spring',
       stiffness: 200,
       damping: 20,
-    }
+    },
   },
 };
 
 const horizontalItem = {
   hidden: { opacity: 0, y: 10 },
-  show: { 
-    opacity: 1, 
+  show: {
+    opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: 'spring',
       stiffness: 200,
       damping: 20,
-    }
+    },
   },
 };
 
-export function SocialLinks({ horizontal = false, isContact = false, className = '' }: { horizontal?: boolean, isContact?: boolean, className?: string }) {
+export function SocialLinks({
+  horizontal = false,
+  isContact = false,
+  className = '',
+}: {
+  horizontal?: boolean;
+  isContact?: boolean;
+  className?: string;
+}) {
   return (
     <motion.div
       variants={container}
@@ -109,9 +117,7 @@ export function SocialLinks({ horizontal = false, isContact = false, className =
                 `}
               >
                 <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10 backdrop-blur-sm -z-10" />
-                <span className="text-xs sm:text-sm font-medium text-white/90">
-                  {link.name}
-                </span>
+                <span className="text-xs sm:text-sm font-medium text-white/90">{link.name}</span>
               </motion.div>
             )}
           </motion.a>

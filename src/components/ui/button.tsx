@@ -10,16 +10,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          'bg-primary text-primary-foreground hover:opacity-90',
-        destructive:
-          'bg-red-500 text-white hover:bg-red-600',
-        outline:
-          'border border-border bg-transparent hover:bg-secondary/50',
-        secondary:
-          'bg-secondary text-secondary-foreground hover:opacity-80',
-        ghost:
-          'text-foreground hover:bg-secondary/50',
+        default: 'bg-primary text-primary-foreground hover:opacity-90',
+        destructive: 'bg-red-500 text-white hover:bg-red-600',
+        outline: 'border border-border bg-transparent hover:bg-secondary/50',
+        secondary: 'bg-secondary text-secondary-foreground hover:opacity-80',
+        ghost: 'text-foreground hover:bg-secondary/50',
         link: 'text-primary underline-offset-4 hover:underline',
       },
       size: {
@@ -38,9 +33,9 @@ const buttonVariants = cva(
 
 const MotionButton = motion.button;
 
-interface ButtonProps extends 
-  Omit<HTMLMotionProps<"button">, keyof VariantProps<typeof buttonVariants>>,
-  VariantProps<typeof buttonVariants> {
+interface ButtonProps
+  extends Omit<HTMLMotionProps<'button'>, keyof VariantProps<typeof buttonVariants>>,
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   isLoading?: boolean;
   children?: React.ReactNode;
@@ -49,7 +44,7 @@ interface ButtonProps extends
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, isLoading, children, ...props }, ref) => {
     const content = React.isValidElement(children) ? children : <span>{children}</span>;
-    
+
     return (
       <MotionButton
         className={cn(buttonVariants({ variant, size, className }))}
@@ -66,7 +61,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               transition={{
                 duration: 1,
                 repeat: Infinity,
-                ease: "linear"
+                ease: 'linear',
               }}
             />
             {content}

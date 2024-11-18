@@ -32,11 +32,7 @@
   body {
     @apply bg-background text-foreground antialiased min-h-screen;
     color: rgb(var(--foreground-rgb));
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgb(var(--background-end-rgb))
-      )
+    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
       rgb(var(--background-start-rgb));
   }
 }
@@ -136,7 +132,8 @@
   }
 
   @keyframes float-particle {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate(0, 0);
     }
     50% {
@@ -150,7 +147,8 @@
   }
 
   @keyframes twinkle {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 0.2;
       transform: scale(0.5);
     }
@@ -174,17 +172,26 @@
   }
 
   @keyframes scrollIndicator {
-    0%, 100% { transform: translateY(-4px); }
-    50% { transform: translateY(4px); }
+    0%,
+    100% {
+      transform: translateY(-4px);
+    }
+    50% {
+      transform: translateY(4px);
+    }
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slideUp {
-    from { 
+    from {
       opacity: 0;
       transform: translateY(10px);
     }
@@ -268,7 +275,8 @@
   }
 
   @keyframes twinkle {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 0;
       transform: scale(0.5);
     }

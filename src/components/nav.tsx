@@ -17,31 +17,33 @@ export function Nav() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       // Get all sections
       const sections = ['top', 'projects', 'contact'];
       const viewportHeight = window.innerHeight;
       const scrollPosition = window.scrollY;
-      
+
       // Find the currently visible section
       let newActiveSection = 'top';
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (!element) continue;
-        
+
         const rect = element.getBoundingClientRect();
         const sectionTop = rect.top + scrollPosition;
         const sectionBottom = sectionTop + rect.height;
-        
+
         // Check if we're in the section with some buffer for transitions
-        if (scrollPosition >= sectionTop - viewportHeight / 2 &&
-            scrollPosition < sectionBottom - viewportHeight / 3) {
+        if (
+          scrollPosition >= sectionTop - viewportHeight / 2 &&
+          scrollPosition < sectionBottom - viewportHeight / 3
+        ) {
           newActiveSection = section;
           break;
         }
       }
-      
+
       setActiveSection(newActiveSection);
     };
 
@@ -56,32 +58,28 @@ export function Nav() {
 
   return (
     <>
-      <motion.div 
+      <motion.div
         className="fixed top-0 left-0 right-0 h-14 sm:h-16 md:h-20 bg-black/50 z-40"
         style={{ opacity }}
       />
-      
+
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 260,
-          damping: 20
+          damping: 20,
         }}
         className="fixed top-0 left-0 right-0 z-50 h-14 sm:h-16 md:h-20"
       >
         <nav className="relative h-full mx-auto max-w-7xl px-3 sm:px-6">
           <div className="flex h-full items-center justify-between">
-            <Link 
-              href="/"
-              onClick={handleHomeClick}
-              className="group relative"
-            >
-              <motion.div 
+            <Link href="/" onClick={handleHomeClick} className="group relative">
+              <motion.div
                 className="relative cursor-pointer"
                 whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
                 <span className="inline-block text-base sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent">
                   Scan
@@ -91,7 +89,7 @@ export function Nav() {
 
             <div className="flex items-center gap-2 sm:gap-4 md:gap-8">
               {['projects', 'contact'].map((section) => (
-                <Link 
+                <Link
                   key={section}
                   href={`#${section}`}
                   className={cn(
@@ -107,9 +105,9 @@ export function Nav() {
                       className="absolute inset-0 bg-white/10 rounded-full"
                       layoutId="activeSection"
                       transition={{
-                        type: "spring",
+                        type: 'spring',
                         stiffness: 380,
-                        damping: 30
+                        damping: 30,
                       }}
                     />
                   )}
