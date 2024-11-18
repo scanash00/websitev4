@@ -2,20 +2,455 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #09090b;
+    --foreground: #fafafa;
+    --card: #18181b;
+    --card-foreground: #fafafa;
+    --primary: #0ea5e9;
+    --primary-foreground: #f8fafc;
+    --secondary: #27272a;
+    --secondary-foreground: #fafafa;
+    --muted: #27272a;
+    --muted-foreground: #a1a1aa;
+    --accent: #0ea5e9;
+    --accent-foreground: #fafafa;
+    --border: #27272a;
+    --radius: 0.75rem;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased min-h-screen;
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))
+      )
+      rgb(var(--background-start-rgb));
+  }
+}
+
+@layer components {
+  .heading-1 {
+    @apply text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl;
+    line-height: 1.1;
+  }
+
+  .heading-2 {
+    @apply text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl;
+    line-height: 1.2;
+  }
+
+  .heading-3 {
+    @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+    line-height: 1.3;
+  }
+
+  .body-large {
+    @apply text-lg text-muted-foreground leading-relaxed;
+  }
+
+  .body-regular {
+    @apply text-base text-muted-foreground leading-relaxed;
+  }
+
+  .section {
+    @apply py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden;
+  }
+
+  .section-inner {
+    @apply max-w-7xl mx-auto relative z-10;
+  }
+
+  .container-sm {
+    @apply max-w-3xl mx-auto;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-muted-foreground hover:text-foreground transition-colors;
+  }
+
+  .nav-link-active {
+    @apply text-foreground;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium
+           bg-primary text-primary-foreground hover:opacity-90
+           h-10 px-6 py-2 transition-all duration-300
+           hover:scale-105 hover:shadow-[0_0_15px_rgba(14,165,233,0.5)];
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium
+           bg-secondary text-secondary-foreground hover:opacity-80
+           h-10 px-6 py-2 transition-all duration-300
+           hover:scale-105;
+  }
+
+  .button-ghost {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium
+           text-foreground hover:bg-secondary/50
+           h-10 px-6 py-2 transition-colors;
+  }
+
+  .card {
+    @apply rounded-lg border bg-secondary text-card-foreground shadow-lg p-6
+           backdrop-blur-sm bg-opacity-50
+           hover:shadow-[0_0_25px_rgba(14,165,233,0.2)]
+           transition-all duration-500;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .animate-scroll {
+    animation: scroll 2s ease-in-out infinite;
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 15s ease infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle 5s ease-in-out infinite;
+  }
+
+  .animate-scroll {
+    animation: scroll 2s ease-in-out infinite;
+  }
+
+  @keyframes float-particle {
+    0% {
+      transform: translate(0, 0);
+    }
+    33% {
+      transform: translate(10px, -10px);
+    }
+    66% {
+      transform: translate(-10px, 10px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  .animate-float-particle {
+    animation: float-particle 10s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(0.5) translate(0, 0);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1) translate(5px, 5px);
+    }
+  }
+
+  .particle:nth-child(2n) {
+    animation-delay: 1s;
+    animation-duration: 7s;
+  }
+
+  .particle:nth-child(3n) {
+    animation-delay: 2s;
+    animation-duration: 9s;
+  }
+
+  .particle:nth-child(4n) {
+    animation-delay: 3s;
+    animation-duration: 11s;
+  }
+
+  .particle:nth-child(5n) {
+    animation-delay: 4s;
+    animation-duration: 13s;
+  }
+
+  @keyframes scrollIndicator {
+    0% { transform: translateY(-4px); }
+    50% { transform: translateY(4px); }
+    100% { transform: translateY(-4px); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes floatParticle {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate(10px, -10px) rotate(120deg);
+    }
+    66% {
+      transform: translate(-10px, 10px) rotate(240deg);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg);
+    }
+  }
+
+  .scroll-indicator {
+    animation: scrollIndicator 1.5s ease-in-out infinite;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .particle:nth-child(3n) {
+    width: 3px;
+    height: 3px;
+    opacity: 0.6;
+  }
+
+  .particle:nth-child(4n) {
+    width: 1px;
+    height: 1px;
+    opacity: 0.3;
+  }
+
+  .particle:nth-child(1) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
+  .particle:nth-child(2) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
+  .particle:nth-child(3) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
+  .particle:nth-child(4) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
+  .particle:nth-child(5) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
+  .particle:nth-child(6) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
+  .particle:nth-child(7) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
+  .particle:nth-child(8) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
+  .particle:nth-child(9) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
+  .particle:nth-child(10) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
+  .particle:nth-child(11) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
+  .particle:nth-child(12) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
+  .particle:nth-child(13) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
+  .particle:nth-child(14) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
+  .particle:nth-child(15) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
+  .particle:nth-child(16) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
+  .particle:nth-child(17) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
+  .particle:nth-child(18) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
+  .particle:nth-child(19) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
+  .particle:nth-child(20) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
+  .particle:nth-child(21) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
+  .particle:nth-child(22) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
+  .particle:nth-child(23) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
+  .particle:nth-child(24) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
+  .particle:nth-child(25) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
+  .particle:nth-child(26) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
+  .particle:nth-child(27) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
+  .particle:nth-child(28) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
+  .particle:nth-child(29) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
+  .particle:nth-child(30) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
+  .particle:nth-child(31) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
+  .particle:nth-child(32) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
+  .particle:nth-child(33) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -1s; }
+  .particle:nth-child(34) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -2s; }
+  .particle:nth-child(35) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -3s; }
+  .particle:nth-child(36) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -4s; }
+  .particle:nth-child(37) { animation: floatParticle 8s ease-in-out infinite; animation-delay: -5s; }
+  .particle:nth-child(38) { animation: floatParticle 9s ease-in-out infinite; animation-delay: -6s; }
+  .particle:nth-child(39) { animation: floatParticle 7s ease-in-out infinite; animation-delay: -7s; }
+  .particle:nth-child(40) { animation: floatParticle 10s ease-in-out infinite; animation-delay: -8s; }
+
+  .hover-scale {
+    transition: transform 0.2s ease-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient 8s linear infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes gradient-x {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scrollIndicator {
+    0% {
+      transform: translateY(-4px);
+    }
+    50% {
+      transform: translateY(4px);
+    }
+    100% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .scroll-indicator {
+    animation: scrollIndicator 1.5s ease-in-out infinite;
+  }
+
+  /* Staggered animations */
+  .stagger-children > * {
+    opacity: 0;
+    animation: slide-up 0.5s ease-out forwards;
+  }
+
+  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-opacity-20 backdrop-blur-lg backdrop-saturate-150;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500;
+    background-size: 200% auto;
+    animation: gradient 8s linear infinite;
+  }
+
+  /* Dark gradient background */
+  .gradient-bg {
+    background: linear-gradient(to bottom, var(--background) 0%, rgba(9, 9, 11, 0.5) 100%);
+  }
+
+  /* Enhanced scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #8b5cf6, #06b6d4);
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #7c3aed, #0891b2);
+  }
 }
