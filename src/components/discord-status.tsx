@@ -196,13 +196,14 @@ export function DiscordStatus() {
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-            className="relative"
+            className="relative w-[60px] h-[60px]"
           >
             <Image
               src={avatarUrl}
               alt="Discord Avatar"
-              fill
-              className="w-[60px] h-[60px] rounded-full ring-[3px] ring-[#5865F2]/10"
+              width={60}
+              height={60}
+              className="rounded-full ring-[3px] ring-[#5865F2]/10"
             />
             <div className="absolute -bottom-1 -right-1 w-[19px] h-[19px] rounded-full bg-[#1E1F22]/80 backdrop-blur-sm flex items-center justify-center">
               {getStatusIcon(discordData.discord_status)}
@@ -228,7 +229,8 @@ export function DiscordStatus() {
                   <Image
                     src={discordData.spotify.album_art_url}
                     alt={discordData.spotify.song}
-                    fill
+                    width={48}
+                    height={48}
                     className="rounded"
                   />
                 </div>
@@ -250,7 +252,8 @@ export function DiscordStatus() {
                     <Image
                       src={getAssetUrl(mainActivity) || ''}
                       alt={mainActivity.name || 'Activity'}
-                      fill
+                      width={48}
+                      height={48}
                       className="rounded"
                     />
                   </div>
