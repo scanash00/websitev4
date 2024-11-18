@@ -53,7 +53,7 @@ export function Nav() {
 
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    router.push('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

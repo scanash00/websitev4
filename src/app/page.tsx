@@ -51,38 +51,6 @@ export default function Home() {
           id="top"
           className="flex min-h-screen w-full flex-col items-center justify-center px-4 sm:px-6 relative overflow-hidden"
         >
-          {/* Simplified gradient background */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-violet-950/5 to-black" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(124,58,237,0.1),transparent_50%)]" />
-          </div>
-
-          {/* Reduced number of particles and optimized animations */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="absolute inset-0 pointer-events-none overflow-hidden"
-          >
-            {[...Array(10)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full particle will-change-transform"
-                style={{
-                  top: `${Math.random() * 100}%`,
-                  left: `${Math.random() * 100}%`,
-                  background: `radial-gradient(circle at center, ${
-                    i % 2 === 0 ? 'rgba(124,58,237,0.1)' : 'rgba(192,132,252,0.1)'
-                  }, transparent)`,
-                  width: `${Math.random() * 60 + 30}px`,
-                  height: `${Math.random() * 60 + 30}px`,
-                  scale: Math.random() * 0.3 + 0.3,
-                  animationDelay: `${Math.random() * 3}s`,
-                }}
-              />
-            ))}
-          </motion.div>
-
           {/* Main content with optimized animations */}
           <motion.div
             className="relative z-10 flex flex-col items-center"
@@ -132,15 +100,32 @@ export default function Home() {
             >
               <Link
                 href="#projects"
-                className="group relative inline-flex items-center gap-2 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 hover:scale-[1.02] transition-all duration-300"
+                className="group relative inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 hover:scale-[1.02] transition-all duration-300 ease-out will-change-transform"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-full opacity-100 group-hover:opacity-90 blur-md transition-all duration-500 group-hover:blur-lg animate-gradient bg-[length:200%_auto]" />
-                <div className="absolute inset-0.5 bg-black rounded-full" />
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-500 via-fuchsia-500 to-cyan-500 rounded-full opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500" />
-                <span className="relative text-sm sm:text-base md:text-lg font-medium text-white flex items-center gap-2 whitespace-nowrap">
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-500/80 via-fuchsia-500/80 to-cyan-500/80 rounded-full opacity-90 group-hover:opacity-100 blur-[1px] transition-all duration-300 ease-out group-hover:blur-[2px] animate-gradient bg-[length:200%_auto] will-change-transform group-hover:scale-[1.02]" />
+                <div className="absolute inset-[1.5px] bg-black rounded-full backdrop-blur-sm group-hover:bg-black/90 transition-colors duration-300 ease-out" />
+
+                <div className="absolute inset-0 overflow-hidden rounded-full">
+                  <motion.div
+                    className="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/[0.08] to-transparent group-hover:via-white/[0.15] transition-colors duration-300 ease-out will-change-transform"
+                    animate={{
+                      translateX: ['0%', '200%'],
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      ease: 'easeInOut',
+                      repeat: Infinity,
+                      repeatDelay: 0.5,
+                    }}
+                  />
+                </div>
+
+                <span className="relative text-sm sm:text-base font-medium text-white/90 group-hover:text-white flex items-center gap-2 whitespace-nowrap will-change-transform transition-colors duration-300 ease-out">
                   View Projects
                   <motion.span
-                    animate={{ x: [0, 5, 0] }}
+                    animate={{
+                      x: [0, 4, 0],
+                    }}
                     transition={{
                       duration: 1.5,
                       repeat: Infinity,

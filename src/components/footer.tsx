@@ -79,7 +79,15 @@ export function Footer() {
           ))}
         </div>
         <p className="mt-10 text-center text-xs leading-5 text-white/60">
-          &copy; {new Date().getFullYear()} Scan. All rights reserved.
+          &copy; {new Date().getFullYear()} Scan. Licensed under{' '}
+          <Link
+            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors duration-300"
+          >
+            CC BY-NC-SA 4.0
+          </Link>
         </p>
       </div>
     </footer>
