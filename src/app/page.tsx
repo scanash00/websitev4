@@ -315,7 +315,7 @@ export default function Home() {
             >
               <div className="space-y-3 sm:space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-violet-500 to-cyan-500 bg-clip-text text-transparent mb-4 md:mb-8 [text-shadow:_0_2px_10px_rgb(124_58_237_/_20%)]">
-                  Contac&apos;t Me
+                  Contact Me
                 </h2>
                 <p className="text-white/80 text-base md:text-lg mb-8 md:mb-12 leading-relaxed">
                   Feel free to reach out through any of these platforms.
