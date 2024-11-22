@@ -18,12 +18,10 @@ export function Nav() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Get all sections
       const sections = ['top', 'projects', 'contact'];
       const viewportHeight = window.innerHeight;
       const scrollPosition = window.scrollY;
 
-      // Find the currently visible section
       let newActiveSection = 'top';
 
       for (const section of sections) {
@@ -34,7 +32,6 @@ export function Nav() {
         const sectionTop = rect.top + scrollPosition;
         const sectionBottom = sectionTop + rect.height;
 
-        // Check if we're in the section with some buffer for transitions
         if (
           scrollPosition >= sectionTop - viewportHeight / 2 &&
           scrollPosition < sectionBottom - viewportHeight / 3

@@ -156,13 +156,11 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Social Links with enhanced positioning */}
           <div className="hidden sm:block absolute left-8 top-1/2 -translate-y-1/2">
             <SocialLinks />
           </div>
         </section>
 
-        {/* Projects Section */}
         <section id="projects" className="py-12 sm:py-20 px-4 md:px-6" ref={projectsRef}>
           <motion.div
             className="max-w-7xl mx-auto"
@@ -190,7 +188,6 @@ export default function Home() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                {/* Project Cards */}
                 <motion.div
                   className="group relative"
                   whileHover={{ scale: 1.02 }}
@@ -299,7 +296,6 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {/* Contact Section */}
         <section id="contact" className="py-12 sm:py-20 px-4 md:px-6" ref={contactRef}>
           <motion.div
             className="max-w-7xl mx-auto"
@@ -319,11 +315,10 @@ export default function Home() {
             >
               <div className="space-y-3 sm:space-y-4">
                 <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-violet-500 to-cyan-500 bg-clip-text text-transparent mb-4 md:mb-8 [text-shadow:_0_2px_10px_rgb(124_58_237_/_20%)]">
-                  Let&apos;s Connect
+                  Contac&apos;t Me
                 </h2>
                 <p className="text-white/80 text-base md:text-lg mb-8 md:mb-12 leading-relaxed">
-                  Feel free to reach out through any of these platforms. I&apos;m always interested
-                  in new opportunities and collaborations.
+                  Feel free to reach out through any of these platforms. 
                 </p>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

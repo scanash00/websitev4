@@ -33,7 +33,6 @@ export function ProjectCard({
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
     >
-      {/* Animated orb effect */}
       <motion.div
         className="absolute -z-10 rounded-full blur-2xl"
         animate={{
