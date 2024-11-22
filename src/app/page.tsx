@@ -318,7 +318,7 @@ export default function Home() {
                   Contac&apos;t Me
                 </h2>
                 <p className="text-white/80 text-base md:text-lg mb-8 md:mb-12 leading-relaxed">
-                  Feel free to reach out through any of these platforms. 
+                  Feel free to reach out through any of these platforms.
                 </p>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
